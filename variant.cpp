@@ -65,3 +65,19 @@ Variant Variant::from_json_string (const string& sjson)
 
     return parse_json (parsed_json);
 }
+
+Variant Variant::parse_json (const json11::Json& job)
+{
+    if (job.is_string ()) return Variant (Symbol, job.string_value ());
+    if (job.is_number ()) return Variant (Number, to_string (job.number_value ()));
+    if (job.is_array ())
+    {
+        Variant result (List);
+        for (const auto& item : job.array_items ())
+        {
+            result.list.push_back (parse_json (item));
+        }
+        return result;
+    }
+    throw runtime_error ("Tipo de JSON no importado");
+}
