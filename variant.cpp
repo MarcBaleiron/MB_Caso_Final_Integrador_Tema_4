@@ -56,3 +56,12 @@ string Variant::to_json_string ()
         default: return "\"<unknown>\"";
     }
 }
+
+Variant Variant::from_json_string (const string& sjson)
+{
+    string err;
+    json11::Json parsed_json = json11::Json::parse (sjson, err);
+    if (!err.empty ()) throw runtime_error ("JSON invalido: " + err);
+
+    return parse_json (parsed_json);
+}
