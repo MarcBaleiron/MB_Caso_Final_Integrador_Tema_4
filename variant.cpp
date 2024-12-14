@@ -69,7 +69,7 @@ Variant Variant::from_json_string (const string& sjson)
 Variant Variant::parse_json (const json11::Json& job)
 {
     if (job.is_string ()) return Variant (Symbol, job.string_value ());
-    if (job.is_number ()) return Variant (Number, to_string (job.number_value ()));
+    if (job.is_number ()) return Variant (Number, std::to_string (job.number_value ()));
     if (job.is_array ())
     {
         Variant result (List);
