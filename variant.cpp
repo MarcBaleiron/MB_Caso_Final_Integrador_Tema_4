@@ -31,3 +31,28 @@ string Variant::to_string ()
         default: return "<unknown>";
     }
 }
+
+string Variant::to_json_string ()
+{
+    switch (type)
+    {
+        case Symbol: return "\"" + val + "\"";
+        case Number: return val;
+        case Cadena: return "\"" + val + "\"";
+        case List:
+        {
+            ostringstream oss;
+            oss << "[";
+            for (size_t i = 0; i < list.size (); ++i)
+            {
+                oss << list [i].to_string ();
+                if (i != list.size () -1) oss << " ";
+            }
+            oss << "]";
+            return oss.str ();
+        }
+        case Proc: return "\"<procedure>\"";
+        case Lambda: return "\"<lambda>\"";
+        default: return "\"<unknown>\"";
+    }
+}
