@@ -7,7 +7,9 @@ set (CMAKE_CXX_STANDARD_REQUIRED True)
 
 add_executable (MB_Caso_Final_Integrador_Tema_4
         main.cpp
-        variant.cpp)
+        variant.cpp
+        variant.h
+        entorno.h)
 
 add_subdirectory (json11)
 
