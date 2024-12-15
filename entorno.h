@@ -7,6 +7,7 @@
 #include "variant.h"
 using namespace std;
 
+// Declaración de la estructura Entorno
 struct Entorno
 {
     map <string, Variant> variables;

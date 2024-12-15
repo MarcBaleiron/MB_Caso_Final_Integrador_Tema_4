@@ -6,10 +6,12 @@
 #include <string>
 using namespace std;
 
+// Constructores definidos
 Variant::Variant (variant_type type) : type (type), env (nullptr), proc (nullptr) { }
 Variant::Variant (variant_type type, const string& val) : type (type), val (val), env (nullptr), proc (nullptr) { }
 Variant::Variant (proc_type proc) : type (Proc), proc (proc), env (nullptr) { }
 
+// Función para convertir una instancia de la clase Variant a string definida
 string Variant::to_string ()
 {
     switch (type)
@@ -35,6 +37,7 @@ string Variant::to_string ()
     }
 }
 
+// Función para convertir una instancia de la clase Variant a formato JSON definida
 string Variant::to_json_string ()
 {
     switch (type)
@@ -60,6 +63,7 @@ string Variant::to_json_string ()
     }
 }
 
+// Función para convertir un string JSON a una instancia de la clase Variant definida
 Variant Variant::from_json_string (const string& sjson)
 {
     string err;
@@ -69,6 +73,7 @@ Variant Variant::from_json_string (const string& sjson)
     return parse_json (parsed_json);
 }
 
+// Función para convertir una cadena JSON a una instancia de la clase Variant definida
 Variant Variant::parse_json (const json11::Json& job)
 {
     if (job.is_string ()) return Variant (Symbol, job.string_value ());
