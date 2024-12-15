@@ -7,7 +7,7 @@
 #include "json11/json11.hpp"
 using namespace std;
 
-enum variant_type {Symbol, Number, List, Proc, Lambda, Cadena};
+enum variant_type { Symbol, Number, List, Proc, Lambda, Cadena };
 
 struct Entorno;
 

@@ -1,6 +1,9 @@
 #include "variant.h"
+#include <iostream>
 #include <sstream>
 #include <stdexcept>
+#include <vector>
+#include <string>
 using namespace std;
 
 Variant::Variant (variant_type type) : type (type), env (nullptr), proc (nullptr) { }
